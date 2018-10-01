@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">exam</string>
+    <string-array name="cities">
+        <item>Latur</item>
+        <item>Pune</item>
+        <item>Mumbai</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
+</resources>
