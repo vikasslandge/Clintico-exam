@@ -1,8 +1,8 @@
 package com.example.vikaslandge.exam.beans
 
 data class Leg(
-        val distance: DistanceX,
-        val duration: DurationX,
+        val distance: Distance,
+        val duration: Duration,
         val end_address: String,
         val end_location: EndLocation,
         val start_address: String,

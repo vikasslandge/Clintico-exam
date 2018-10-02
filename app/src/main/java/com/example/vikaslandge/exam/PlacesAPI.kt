@@ -1,6 +1,6 @@
 package com.example.vikaslandge.exam
 
-import com.example.vikaslandge.exam.beans.PlacesAPIBeans
+ import com.example.vikaslandge.exam.beans.PlacesAPIBeans
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

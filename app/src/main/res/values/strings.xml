@@ -4,6 +4,10 @@
         <item>Latur</item>
         <item>Pune</item>
         <item>Mumbai</item>
+        <item>Hyederabad</item>
+        <item>Banglore</item>
+        <item>Delhi</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps2">Map</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.vikaslandge.exam
 
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
@@ -9,6 +10,14 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.maps.DirectionsApi
+import com.google.maps.GeoApiContext
+
+import com.google.android.gms.maps.model.PolylineOptions
+
+
+
+
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -43,13 +52,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         item.start_location.lng)
                 mMap.addMarker(MarkerOptions().position(location).title(item.start_address))
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,
-                        17.toFloat()))
+                        6.toFloat()))
                 val location2 = LatLng(item.end_location.lat,
                         item.end_location.lng)
-                mMap.addMarker(MarkerOptions().position(location).title(item.end_address))
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,
-                        17.toFloat()))
+                mMap.addMarker(MarkerOptions().position(location2).title(item.end_address))
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location2,
+                        6.toFloat()))
+                val location3 = LatLng(lati!!, longi!!)
+                mMap.addMarker(MarkerOptions().position(location3).title("current location"))
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location3,
+                        6.toFloat()))
             }
+
         } else {
             val sydney = LatLng(intent.getDoubleExtra
             ("latitude", 0.toDouble()),
@@ -59,5 +73,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,
                     17.toFloat()))
         }
+
+      var  context = GeoApiContext.Builder().apiKey("AIzaSyAd2Yj_O5GZhsfWzB8H4w1UvC-fWBggItg").build()
+        var dir = DirectionsApi.getDirections(context,"list_new2!![0].start_location.lat.toString(),list_new2!![0].start_location.lng .toString()", "list_new2!![0].end_location.lat.toString(), list_new2!![0].end_location.lng .toString()")
+        var line  = PolylineOptions().color((Color.BLUE))
+                .add(LatLng(list_new2!![0].start_location.lat,list_new2!![0].start_location.lng))
+                .add( LatLng(lati!!,longi!!));
+
+        var polyline = mMap.addPolyline(line);
+        var line2  = PolylineOptions().color(Color.RED)
+                .add( LatLng(lati!!,longi!!))
+                .add(LatLng(list_new2!![0].end_location.lat,list_new2!![0].end_location.lng))
+
+        var polyline2 = mMap.addPolyline(line2)
+
+
+
     }
 }
